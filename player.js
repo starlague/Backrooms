@@ -55,17 +55,16 @@ class Player {
   update(dt, pressedKeys, collides) {
     const moveForward  = pressedKeys.has(this.keys.forward);
     const moveBackward = pressedKeys.has(this.keys.backward);
-    const turnLeft     = pressedKeys.has(this.keys.left);
-    const turnRight    = pressedKeys.has(this.keys.right);
+    const strafeLeft   = pressedKeys.has(this.keys.left);
+    const strafeRight  = pressedKeys.has(this.keys.right);
 
-    if (turnLeft)  this.angle += 1.8 * dt;
-    if (turnRight) this.angle -= 1.8 * dt;
-    this.group.rotation.y = this.angle;
-
-    const dir  = new THREE.Vector3(-Math.sin(this.angle), 0, -Math.cos(this.angle));
+    const dirForward  = new THREE.Vector3(-Math.sin(this.angle), 0, -Math.cos(this.angle));
+    const dirLateral = new THREE.Vector3(-Math.cos(this.angle), 0, Math.sin(this.angle));
     const move = new THREE.Vector3();
-    if (moveForward)  move.addScaledVector(dir,  this.speed * dt);
-    if (moveBackward) move.addScaledVector(dir, -this.speed * dt);
+    if (moveForward)  move.addScaledVector(dirForward,  this.speed * dt);
+    if (moveBackward) move.addScaledVector(dirForward, -this.speed * dt);
+    if (strafeLeft)   move.addScaledVector(dirLateral, this.speed * dt);
+    if (strafeRight)  move.addScaledVector(dirLateral,  -this.speed * dt);
 
     const tryX = this.group.position.clone(); tryX.x += move.x;
     if (!collides(tryX, this.size)) this.group.position.x = tryX.x;
