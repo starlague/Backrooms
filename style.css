@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #111;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  color: #fff;
+}
+
+canvas {
+  display: block;
+}
+
+/* =====================================================================
+   HUD — Chronomètre & Bouton Caméra
+   ===================================================================== */
+#ui {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 8px 16px;
+  border-radius: 10px;
+}
+
+#timer {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0ff;
+}
+
+#cameraBtn {
+  background: #333;
+  border: 1px solid #555;
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#cameraBtn:hover {
+  background: #555;
+}
+
+/* =====================================================================
+   HINT CONTRÔLES (bas de page)
+   ===================================================================== */
+#controls-hint {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #aaa;
+  z-index: 100;
+}
+
+/* =====================================================================
+   LABELS MULTIJOUEUR (split screen)
+   ===================================================================== */
+#p1label,
+#p2label {
+  position: fixed;
+  top: 10px;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  display: none;
+}
+
+#p1label {
+  left: 10px;
+  color: #4af;
+}
+
+#p2label {
+  right: 10px;
+  color: #f84;
+}
+
+/* =====================================================================
+   OVERLAYS (écrans de début / victoire)
+   ===================================================================== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.overlay h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.overlay p {
+  color: #aaa;
+  margin-bottom: 8px;
+  font-size: 1.1em;
+}
+
+/* Visibilité par défaut des overlays */
+#winOverlay   { display: none; }
+#startOverlay { display: flex; }
+
+/* =====================================================================
+   BOUTONS
+   ===================================================================== */
+.btn {
+  margin-top: 12px;
+  padding: 10px 28px;
+  font-size: 1em;
+  background: #0af;
+  border: none;
+  color: #000;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.btn:hover            { background: #0cf; }
+
+.btn.secondary        { background: #444; color: #fff; }
+.btn.secondary:hover  { background: #666; }
+
+.btn.danger           { background: #f44; color: #fff; }
+.btn.danger:hover     { background: #f66; }
+
+/* =====================================================================
+   FORMULAIRE SEED & IMPORT / EXPORT
+   ===================================================================== */
+#seedRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+#seedInput {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background: #222;
+  color: #fff;
+  font-size: 1em;
+  width: 160px;
+}
+
+#exportBtn,
+#importLabel {
+  padding: 6px 12px;
+  background: #333;
+  border: 1px solid #555;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin-top: 6px;
+}
+
+#importLabel:hover,
+#exportBtn:hover {
+  background: #555;
+}
+
+/* Input file masqué (déclenché par le label parent) */
+#importFile {
+  display: none;
+}
+
+#modeToggle {
+  margin-top: 10px;
+}
