@@ -8,11 +8,8 @@
 </head>
 <body>
 
-  <!-- ================================================================
-       OVERLAY — Écran de démarrage
-       ================================================================ -->
   <div class="overlay" id="startOverlay">
-    <h1>🌀 Labyrinthe 3D</h1>
+    <h1>Labyrinthe 3D</h1>
     <p>Trouvez la sortie le plus vite possible !</p>
 
     <div id="seedRow">
@@ -23,10 +20,10 @@
 
     <div style="display:flex; gap:8px; margin-top:8px;">
       <button id="exportBtn" onclick="exportMaze()" style="display:none;">
-        💾 Exporter labyrinthe
+        Exporter labyrinthe
       </button>
       <label id="importLabel">
-        📂 Importer labyrinthe
+        Importer labyrinthe
         <input id="importFile" type="file" accept=".json" onchange="importMaze(event)" />
       </label>
     </div>
@@ -43,40 +40,34 @@
     </p>
   </div>
 
-  <!-- ================================================================
-       OVERLAY — Écran de victoire
-       ================================================================ -->
   <div class="overlay" id="winOverlay">
-    <h1 id="winTitle">🏆 Bravo !</h1>
+    <h1 id="winTitle">Bravo !</h1>
     <p id="winMsg"></p>
     <p id="winTime"></p>
-    <button class="btn" onclick="restartGame()">🔄 Rejouer (même labyrinthe)</button>
+    <button class="btn" onclick="restartGame()">Rejouer (même labyrinthe)</button>
     <button class="btn secondary" style="margin-top:8px;" onclick="newGame()">
       🆕 Nouveau labyrinthe
     </button>
   </div>
 
-  <!-- ================================================================
-       HUD — Chronomètre & bouton caméra
-       ================================================================ -->
   <div id="ui">
     <span id="timer">⏱ 00:00</span>
-    <button id="cameraBtn" onclick="toggleCamera()">📷 Vue dessus</button>
+    <button id="cameraBtn" onclick="toggleCamera()">Vue dessus</button>
   </div>
 
-  <!-- Labels split-screen multijoueur -->
   <div id="p1label">Joueur 1</div>
   <div id="p2label">Joueur 2</div>
 
-  <!-- Aide contrôles (bas de page) -->
   <div id="controls-hint">
     ZQSD / ↑↓←→ = déplacer &nbsp;|&nbsp; C = caméra &nbsp;|&nbsp; Multijoueur : P1=WASD, P2=IJKL
   </div>
 
-  <!-- ================================================================
-       SCRIPTS
-       ================================================================ -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="maze.js"></script>
+  <script src="textures.js"></script>
+  <script src="player.js"></script>
+  <script src="scene.js"></script>
+  <script src="game.js"></script>
   <script src="main.js"></script>
 
 </body>
